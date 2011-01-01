@@ -1,10 +1,3 @@
-<$mt:var name="folder_creator" value="admin"$>
-<$mt:var name="number_of_entries" value="500"$>
-<$mt:var name="entries_offset" value="0"$>
-<$mt:var name="export_entries" value="1"$>
-<$mt:var name="export_folders" value="1"$>
-<$mt:var name="export_pages"   value="1"$>
-
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- generator="<$mt:Version encode_xml="1"$>" created="<$mt:Date encode_xml="1"$>"-->
 <rss version="2.0"
@@ -28,7 +21,7 @@
     <mt:Categories>
         <wp:category>
             <wp:category_nicename><$mt:CategoryLabel encode_xml="1"$></wp:category_nicename>
-            <wp:category_parent><mt:ParentCategory><$mt:CategoryID$</mt:ParentCategory></wp:category_parent>
+            <wp:category_parent><mt:ParentCategory><$mt:CategoryID$></mt:ParentCategory></wp:category_parent>
             <wp:cat_name><![CDATA[<$mt:CategoryLabel encode_xml="1"$>]]></wp:cat_name>
         </wp:category>
     </mt:Categories>
@@ -38,8 +31,7 @@
             <wp:tag_name><![CDATA["<$mt:TagName encode_xml="1"$>"]]></wp:tag_name>
         </wp:tag>
     </mt:Tags>
-    <mt:If name="export_entries">
-    <mt:Entries limit="$number_of_entries" offset="$entries_offset">
+    <mt:Entries lastn="10000">
     <item>
         <title><$mt:EntryTitle encode_xml="1"$></title>
         <link><$mt:EntryPermalink encode_xml="1"$></link>
@@ -91,35 +83,5 @@
         </mt:Comments>
     </item>
     </mt:Entries>
-    </mt:If>
-    <mt:If name="export_folders">
-    <mt:TopLevelFolders>
-    <item>
-        <title><$mt:FolderLabel encode_xml="1"$></title>
-        <link><$mt:BlogURL encode_xml="1"$><$mt:FolderPath encode_xml="1"$></link>
-        <pubDate><mt:Pages limit="1"><$mt:PageDate format="%Y-%m-%d %H:%M:%S" encode_xml="1"$></mt:Pages></pubDate>
-        <dc:creator><![CDATA[<$mt:var name="folder_creator" encode_xml="1"$>]]></dc:creator>
-        <guid isPermaLink="false"><$mt:BlogURL encode_xml="1"$><$mt:FolderPath encode_xml="1"$></guid>
-        <description></description>
-        <content:encoded><![CDATA[]]></content:encoded>
-        <excerpt:encoded><![CDATA[]]></excerpt:encoded>
-        <wp:post_id><$mt:FolderID encode_xml="1"$></wp:post_id>
-        <wp:post_date><mt:Pages limit="1"><$mt:PageDate format="%Y-%m-%d %H:%M:%S" encode_xml="1"$></mt:Pages></wp:post_date>
-        <wp:post_date_gmt><mt:Pages limit="1"><$mt:PageDate format="%Y-%m-%d %H:%M:%S" utc="1" encode_xml="1"$></mt:Pages></wp:post_date_gmt>
-        <wp:comment_status>closed</wp:comment_status>
-        <wp:ping_status>closed</wp:ping_status>
-        <wp:post_name><$mt:FolderLabel lower_case="1" replace=" ","-" encode_xml="1"$></wp:post_name>
-        <wp:status>publish</wp:status>
-        <wp:post_parent><mt:ParentFolder><$mt:FolderID setvar="parent_folder" encode_xml="1"$></mt:ParentFolder><mt:If name="parent_folder"><$mt:var name="parent_folder" encode_xml="1"$><mt:Else>0</mt:If><mt:var name="parent_folder" value="0"></wp:post_parent>
-        <wp:menu_order>0</wp:menu_order>
-        <wp:post_type>page</wp:post_type>
-        <wp:post_password></wp:post_password>
-    </item>
-    <$mt:SubFolderRecurse encode_xml="1"$>
-    </mt:TopLevelFolders>
-    </mt:If>
-    <mt:If name="export_pages">
-
-    </mt:If>
 </channel>
-</rss>
+</rss>​
